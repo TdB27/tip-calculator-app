@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-body: hsl(185, 41%, 84%);
+    --section: hsl(0, 0%, 100%);
+    --color-p: hsl(186, 14%, 43%);
+    --background-input: hsl(189, 41%, 97%);
+    --number-input: hsl(184, 14%, 56%);
+    --section-2: hsl(183, 100%, 15%);
+    --value-reset: hsl(172, 67%, 45%);
+
+}
+
+body {
+    background: var(--background-body);
+}
+
+/* HEADER */
+.logo {
+    width: 6rem;
+    margin: auto;
+}
+
+section {
+    width: 50%;
+    background: var(--section);
+    margin: auto;
+    display: flex;
+    flex-flow:row nowrap;
+    gap: .5rem;
+    padding: 1rem;
+
+}
+
+h1 {
+    display: none
+}
+
+/* === BASE === */
+.section-1, .section-2 {
+    width: 50%;
+    border: 1px solid #000
+}
+
+.section-1 {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
+    padding: .5rem;
+}
+
+.section-1 input {
+    width: 100%;
+    height: 1.5rem;
+    text-align: right;
+    background: hsl(189, 41%, 97%);
+    padding: 0.5rem;
+}
+
+/* ===SECTION-1 === */
+/* === BILL === */
+.bill input {
+    background: url(./images/icon-dollar.svg) no-repeat var(--background-input);
+    background-position: 5% 50%;
+    background-size: .5rem
+}
+
+/* === SELECT-TIP === */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 0.5rem
+}
+
+.grid button,
+.grid input {
+    width: 3.59rem;
+    height: 1.5rem
+}
+
+/* === NUMBER-PEOPLE === */
+.number-people input {
+    background: url(./images/icon-person.svg) no-repeat var(--background-input);
+    background-position: 5% 50%;
+    background-size: .5rem
+}
+
+/* SECTION-2 */
+.section-2 {
+    padding: 2rem 1rem 1.5rem;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between
+}
+
+.section-2 .box {
+    height: 5.5rem;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
+
+.box .content {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center
+}
+
+.reset button {
+    width: 100%
+}

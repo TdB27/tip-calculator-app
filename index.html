@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/logo.svg" alt="logo splitter">
+        </div>
+    </header>
+    <main>
+        <section>
+            <h1>app para calcular gorjeta</h1>
+            <div class="section-1">
+                <div class="bill">
+                    <label for="bill">Bill</label>
+                    <input type="number" id="bill" value="142.55">
+                </div>
+                <div class="select-tip">
+                    <p>Select Tip %</p>
+                    <div class="grid">
+                        <button>5%</button>
+                        <button>10%</button>
+                        <button>15%</button>
+                        <button>25%</button>
+                        <button>50%</button>
+                        <input type="number" placeholder="Custom" maxlength="3">
+                    </div>
+                    </div>
+                <div class="number-people">
+                    <label for="people">Number of People</label>
+                    <input type="number" id="people" value="5">
+                </div>
+            </div>
+            <div class="section-2">
+                <div class="box">
+                    <div class="content tip-amount">
+                        <div class="person">
+                            <p>  Tip Amount</p>
+                            <p> / person</p>
+                        </div>
+                        <div class="value">$0.00</div>
+                    </div>
+                    <div class="content total">
+                        <div class="person">
+                            <p>Total</p>
+                            <p>/ person</p>
+                        </div>
+                        <div class="value">$0.00</div>
+                    </div>
+                </div>
+                <div class="reset">
+                    <button>RESET</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
