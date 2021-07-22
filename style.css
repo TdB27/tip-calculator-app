@@ -1,116 +1,259 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --background-body: hsl(185, 41%, 84%);
-    --section: hsl(0, 0%, 100%);
-    --color-p: hsl(186, 14%, 43%);
-    --background-input: hsl(189, 41%, 97%);
-    --number-input: hsl(184, 14%, 56%);
-    --section-2: hsl(183, 100%, 15%);
-    --value-reset: hsl(172, 67%, 45%);
-
+  --background-body: hsl(185, 41%, 84%);
+  --section: hsl(0, 0%, 100%);
+  --color-p: hsl(186, 14%, 43%);
+  --background-input: hsl(189, 41%, 97%);
+  --color-person: hsl(184, 14%, 56%);
+  --background-button-section-2: hsl(183, 100%, 15%);
+  --value-reset: hsl(172, 67%, 45%);
+  --hover-value-reset: hsl(172, 73%, 78%);
 }
 
 body {
-    background: var(--background-body);
+  height: 100vh;
+  width: 100vw;
+  background: var(--background-body);
 }
 
 /* HEADER */
 .logo {
-    width: 6rem;
-    margin: auto;
+  width: 6rem;
+  margin: 0 auto;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
 }
 
 section {
-    width: 50%;
-    background: var(--section);
-    margin: auto;
-    display: flex;
-    flex-flow:row nowrap;
-    gap: .5rem;
-    padding: 1rem;
-
+  width: 55%;
+  background: var(--section);
+  margin: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 h1 {
-    display: none
+  display: none;
 }
 
 /* === BASE === */
-.section-1, .section-2 {
-    width: 50%;
-    border: 1px solid #000
+.section-1,
+.section-2 {
+  width: 50%;
 }
 
 .section-1 {
-    display: flex;
-    flex-flow: column wrap;
-    gap: 1rem;
-    padding: .5rem;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+  padding: 0.5rem;
 }
 
 .section-1 input {
-    width: 100%;
-    height: 1.5rem;
-    text-align: right;
-    background: hsl(189, 41%, 97%);
-    padding: 0.5rem;
+  width: 100%;
+  height: 1.5rem;
+  padding: 0.8rem;
+  text-align: right;
+  background: hsl(189, 41%, 97%);
+  font: 400 1rem 'Space Mono', sans-serif;
+  font-weight: bold;
+  color: var(--background-button-section-2);
+  border: none;
+  border-radius: 0.2rem;
+}
+
+/* contorno ao redor de um obj = outline */
+.section-1 input[type='number']:focus {
+  outline: 0;
+  box-shadow: 0 0 0 1.5px var(--value-reset);
+}
+
+.section-1 label,
+.section-1 p,
+.section-1 span,
+.section-2 p {
+  font: 400 0.6rem 'Space Mono', sans-serif;
+  font-weight: bold;
+}
+
+.section-1 label,
+.section-1 p {
+  color: var(--color-p);
 }
 
 /* ===SECTION-1 === */
+.bill input,
+.number-people input {
+  margin-top: 0.2rem;
+}
+
 /* === BILL === */
 .bill input {
-    background: url(./images/icon-dollar.svg) no-repeat var(--background-input);
-    background-position: 5% 50%;
-    background-size: .5rem
+  background: url(./images/icon-dollar.svg) no-repeat var(--background-input);
+  background-position: 5% 50%;
+  background-size: 0.5rem;
 }
 
 /* === SELECT-TIP === */
+.select-tip p {
+  margin-bottom: 0.5rem;
+}
+
 .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 0.5rem
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
 }
 
 .grid button,
 .grid input {
-    width: 3.59rem;
-    height: 1.5rem
+  height: 1.8rem;
+  font: 400 1rem 'Space Mono', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  padding: 0;
+  border-radius: 0.2rem;
+  border: none;
+  cursor: pointer;
+}
+
+.grid button {
+  background: var(--background-button-section-2);
+  color: var(--section);
+}
+
+.grid button:hover {
+  background: var(--hover-value-reset);
+  color: var(--background-button-section-2);
+}
+
+.button.active {
+  background: var(--value-reset);
+  color: var(--background-button-section-2);
 }
 
 /* === NUMBER-PEOPLE === */
+.number-people .flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
 .number-people input {
-    background: url(./images/icon-person.svg) no-repeat var(--background-input);
-    background-position: 5% 50%;
-    background-size: .5rem
+  background: url(./images/icon-person.svg) no-repeat var(--background-input);
+  background-position: 5% 50%;
+  background-size: 0.5rem;
+}
+
+/* validation */
+.number-people span.no-validated {
+  color: red;
+}
+
+.number-people input.no-validated,
+.number-people input.no-validated:focus {
+  box-shadow: 0 0 0 1.5px red;
 }
 
 /* SECTION-2 */
 .section-2 {
-    padding: 2rem 1rem 1.5rem;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-between
+  padding: 2rem 1.8rem 1.5rem;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  background: var(--background-button-section-2);
+  border-radius: 0.5rem;
 }
 
 .section-2 .box {
-    height: 5.5rem;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-between;
+  height: 6rem;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
 }
 
 .box .content {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.person p:first-child {
+  color: var(--section);
+}
+
+.person p:nth-child(2) {
+  color: var(--color-p);
+}
+
+.content .value {
+  font: 700 2rem 'Space Mono', sans-serif;
+  color: var(--value-reset);
 }
 
 .reset button {
-    width: 100%
+  width: 100%;
+  height: 1.8rem;
+  border: none;
+  border-radius: 0.2rem;
+  background: var(--value-reset);
+  color: var(--background-button-section-2);
+  font: 400 1rem 'Space Mono', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.reset button:hover {
+  background: var(--hover-value-reset);
+}
+
+/* when empty fields */
+.section-1 input.empty::placeholder {
+  opacity: 0.5;
+}
+
+.reset.empty button {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.reset.empty button:hover {
+  background: var(--value-reset);
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 700px) and (max-width: 1023px) {
+  section {
+    width: 75%;
+  }
+
+  .content .value {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  section {
+    width: 100%;
+    flex-flow: column wrap;
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  .section-1,
+  .section-2 {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
