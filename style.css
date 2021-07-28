@@ -13,6 +13,7 @@
   --background-button-section-2: hsl(183, 100%, 15%);
   --value-reset: hsl(172, 67%, 45%);
   --hover-value-reset: hsl(172, 73%, 78%);
+
 }
 
 body {
@@ -25,19 +26,19 @@ body {
 .logo {
   width: 6rem;
   margin: 0 auto;
-  padding-top: 4rem;
-  padding-bottom: 2rem;
+  padding-top: 10rem;
+  padding-bottom: 5.5rem;
 }
 
 section {
-  width: 55%;
+  width: 65%;
   background: var(--section);
   margin: auto;
   display: flex;
-  flex-flow: row nowrap;
-  gap: 0.5rem;
-  padding: 1rem;
-  border-radius: 1rem;
+  flex-flow:row nowrap;
+  gap: 2rem;
+  padding: 1.9rem;
+  border-radius: 1.5rem;
 }
 
 h1 {
@@ -45,115 +46,121 @@ h1 {
 }
 
 /* === BASE === */
-.section-1,
-.section-2 {
+.section-1, .section-2 {
   width: 50%;
 }
 
 .section-1 {
   display: flex;
   flex-flow: column wrap;
-  gap: 1rem;
-  padding: 0.5rem;
+  gap: 2.5rem;
+  padding: 0.75rem;
 }
 
 .section-1 input {
   width: 100%;
-  height: 1.5rem;
-  padding: 0.8rem;
+  height: 3rem;
+  padding: 1rem;
+  padding-left: 2.5rem;
   text-align: right;
   background: hsl(189, 41%, 97%);
-  font: 400 1rem 'Space Mono', sans-serif;
+  font: 400 1.5rem 'Space Mono', sans-serif;
   font-weight: bold;
   color: var(--background-button-section-2);
   border: none;
-  border-radius: 0.2rem;
+  border-radius: 0.4rem;
 }
 
 /* contorno ao redor de um obj = outline */
-.section-1 input[type='number']:focus {
+.section-1 input[type="number"]:focus {
   outline: 0;
-  box-shadow: 0 0 0 1.5px var(--value-reset);
+  box-shadow: 0 0 0 1.5px var(--value-reset);    
 }
+
 
 .section-1 label,
 .section-1 p,
 .section-1 span,
 .section-2 p {
-  font: 400 0.6rem 'Space Mono', sans-serif;
+  font: 400 1rem 'Space Mono', sans-serif;
   font-weight: bold;
 }
 
 .section-1 label,
 .section-1 p {
-  color: var(--color-p);
+  color: var(--color-p)
 }
 
 /* ===SECTION-1 === */
 .bill input,
 .number-people input {
-  margin-top: 0.2rem;
+  margin-top: .4rem
 }
+
 
 /* === BILL === */
 .bill input {
   background: url(./images/icon-dollar.svg) no-repeat var(--background-input);
-  background-position: 5% 50%;
-  background-size: 0.5rem;
+  background-position: 6% 50%;
+  background-size: 0.75rem;  
 }
 
 /* === SELECT-TIP === */
 .select-tip p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 0.5rem;
+  grid-gap: 1rem
 }
 
 .grid button,
 .grid input {
-  height: 1.8rem;
-  font: 400 1rem 'Space Mono', sans-serif;
+  height: 3.2rem;
+  font: 400 1.5rem'Space Mono', sans-serif;
   font-weight: bold;
-  text-align: center;
-  padding: 0;
-  border-radius: 0.2rem;
+  border-radius: 0.4rem;
   border: none;
   cursor: pointer;
+  text-align: center;
+  padding: 0;
 }
 
 .grid button {
   background: var(--background-button-section-2);
-  color: var(--section);
+  color: var(--section)
 }
 
 .grid button:hover {
   background: var(--hover-value-reset);
-  color: var(--background-button-section-2);
+  color: var(--background-button-section-2)
 }
 
-.button.active {
+button.active {
   background: var(--value-reset);
-  color: var(--background-button-section-2);
+  color: var(--background-button-section-2)
 }
 
 /* === NUMBER-PEOPLE === */
 .number-people .flex {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-between
 }
 
 .number-people input {
   background: url(./images/icon-person.svg) no-repeat var(--background-input);
-  background-position: 5% 50%;
-  background-size: 0.5rem;
+  background-position: 6% 50%;
+  background-size: 0.75rem
 }
 
 /* validation */
+.number-people span.hidden {
+  display: none;
+}
+
 .number-people span.no-validated {
   color: red;
 }
@@ -165,18 +172,18 @@ h1 {
 
 /* SECTION-2 */
 .section-2 {
-  padding: 2rem 1.8rem 1.5rem;
+  padding: 2.8rem 2.5rem 2.5rem;
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
   background: var(--background-button-section-2);
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 }
 
 .section-2 .box {
-  height: 6rem;
+  height: 10.5rem;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   justify-content: space-between;
 }
 
@@ -184,36 +191,36 @@ h1 {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: center
 }
 
 .person p:first-child {
-  color: var(--section);
+  color: var(--section)
 }
 
 .person p:nth-child(2) {
-  color: var(--color-p);
+  color: var(--color-p)
 }
 
 .content .value {
-  font: 700 2rem 'Space Mono', sans-serif;
-  color: var(--value-reset);
+  font: 700 3.2rem 'Space Mono', sans-serif;
+  color: var(--value-reset)
 }
 
 .reset button {
   width: 100%;
-  height: 1.8rem;
+  height: 3.2rem;
   border: none;
   border-radius: 0.2rem;
   background: var(--value-reset);
   color: var(--background-button-section-2);
-  font: 400 1rem 'Space Mono', sans-serif;
+  font: 400 1.5rem 'Space Mono', sans-serif;
   font-weight: bold;
-  cursor: pointer;
+  cursor: pointer
 }
 
 .reset button:hover {
-  background: var(--hover-value-reset);
+  background: var(--hover-value-reset)
 }
 
 /* when empty fields */
@@ -223,7 +230,7 @@ h1 {
 
 .reset.empty button {
   opacity: 0.3;
-  cursor: not-allowed;
+  cursor: not-allowed
 }
 
 .reset.empty button:hover {
@@ -231,29 +238,76 @@ h1 {
 }
 
 /* MEDIA QUERIES */
-@media screen and (min-width: 700px) and (max-width: 1023px) {
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .logo {
+      padding-top: 6rem;
+      padding-bottom: 3rem
+  }
+
   section {
-    width: 75%;
+      width: 95%
   }
 
   .content .value {
-    font-size: 1.6rem;
+      font-size: 2rem
   }
 }
 
-@media screen and (max-width: 699px) {
-  section {
-    width: 100%;
-    flex-flow: column wrap;
-    border-radius: 1rem 1rem 0 0;
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .logo {
+      padding-top: 8rem;
+      padding-bottom: 4.4rem
   }
 
-  .section-1,
-  .section-2 {
-    width: 100%;
+  section {
+      width: 85%;
+  }
+
+  .content .value {
+      font-size: 2.5rem
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .logo {
+      padding-top: 3.2rem;
+      padding-bottom: 2.4rem;
+  }
+
+  section {
+      width: 100%;
+      flex-flow: column wrap;
+      border-radius: 1.5rem 1.5rem 0 0;
+  }
+
+  .section-1, .section-2 {
+      width: 100%
+  }
+
+  .section-1 {
+      gap: 2rem;
+      padding: 0.25rem;
   }
 
   .grid {
-    grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  }
+
+  .grid input {
+      text-align: right;
+      padding: 1rem 1rem 1rem 2.5rem;
+  }
+
+  .section-2 {
+      height: 16.5rem;
+      padding: 2rem 1.8rem 1.5rem;
+  }
+
+  .section-2 .box {
+      height: 7.5rem;
+  }
+
+  .content .value {
+      font-size: 2rem;
   }
 }

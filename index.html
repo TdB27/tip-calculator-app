@@ -38,20 +38,28 @@
           <div class="select-tip">
             <p>Select Tip %</p>
             <div class="grid">
-              <button>5%</button>
-              <button class="button active">10%</button>
-              <button>15%</button>
-              <button>25%</button>
-              <button>50%</button>
-              <input type="number" placeholder="Custom" />
+              <button id="5%" onclick="Res.total5Percent()">5%</button>
+              <button id="10%" onclick="Res.total10Percent()">10%</button>
+              <button id="15%" onclick="Res.total15Percent()">15%</button>
+              <button id="25%" onclick="Res.total25Percent()">25%</button>
+              <button id="50%" onclick="Res.total50Percent()">50%</button>
+              <input id="custom" type="number" placeholder="Custom" />
             </div>
           </div>
           <div class="number-people">
             <div class="flex">
               <label for="people"> Number of People</label>
-              <span class="no-validated">Can't be zero</span>
+              <span id="hidden" class="hidden no-validated"
+                ><!-- Can't be zero --></span
+              >
             </div>
-            <input type="number" class="empty" id="people" placeholder="0" />
+            <input
+              type="number"
+              class="empty"
+              id="people"
+              placeholder="0"
+              pattern="[0-9]+$"
+            />
           </div>
         </div>
         <div class="section-2">
@@ -61,21 +69,22 @@
                 <p>Tip Amount</p>
                 <p>/ person</p>
               </div>
-              <div class="value">$0.00</div>
+              <div class="value" id="tip-amountDisplay">$0.00</div>
             </div>
             <div class="content total">
               <div class="person">
                 <p>Total</p>
                 <p>/ person</p>
               </div>
-              <div class="value">$1132.79</div>
+              <div class="value" id="totalDisplay">$0.00</div>
             </div>
           </div>
           <div class="reset empty">
-            <button>RESET</button>
+            <button onclick="Clean.reset()">RESET</button>
           </div>
         </div>
       </section>
     </main>
+    <script src="scripts.js"></script>
   </body>
 </html>
