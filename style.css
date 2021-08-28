@@ -230,44 +230,15 @@ button.active {
 
 .reset.empty button {
   opacity: 0.3;
-  cursor: not-allowed
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .reset.empty button:hover {
   background: var(--value-reset);
 }
 
-/* MEDIA QUERIES */
-@media screen and (min-width: 767px) and (max-width: 1023px) {
-  .logo {
-      padding-top: 6rem;
-      padding-bottom: 3rem
-  }
-
-  section {
-      width: 95%
-  }
-
-  .content .value {
-      font-size: 2rem
-  }
-}
-
-@media screen and (min-width: 1024px) and (max-width: 1439px) {
-  .logo {
-      padding-top: 8rem;
-      padding-bottom: 4.4rem
-  }
-
-  section {
-      width: 85%;
-  }
-
-  .content .value {
-      font-size: 2.5rem
-  }
-}
-
+/* MEDIA QUERIES */ 
 @media screen and (max-width: 766px) {
   .logo {
       padding-top: 3.2rem;
@@ -309,5 +280,35 @@ button.active {
 
   .content .value {
       font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .logo {
+      padding-top: 6rem;
+      padding-bottom: 3rem
+  }
+
+  section {
+      width: 95%
+  }
+
+  .content .value {
+      font-size: 2rem
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .logo {
+      padding-top: 8rem;
+      padding-bottom: 4.4rem
+  }
+
+  section {
+      width: 75%;
+  }
+
+  .content .value {
+      font-size: 2.5rem
   }
 }
