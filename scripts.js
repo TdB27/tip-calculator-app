@@ -1,12 +1,12 @@
 let inputBill = document.querySelector('#bill')
-const button5 = document.getElementById('5%')
-const button10 = document.getElementById('10%')
-const button15 = document.getElementById('15%')
-const button25 = document.getElementById('25%')
-const button50 = document.getElementById('50%')
+let buttonDataPercent = document.querySelectorAll('[data-percent]')
 let buttonCustom = document.getElementById('custom')
 let inputNumberPeople = document.querySelector('#people')
-let hidden = document.querySelector('.number-people #hidden')
+const hidden = document.querySelector('.number-people #hidden')
+
+const resetTip = document.getElementById('tip-amountDisplay')
+const resetTotal = document.getElementById('totalDisplay')
+const resetButton = document.querySelector('.reset')
 
 /* pegar os values dos elementos */
 const getEl = {
@@ -27,7 +27,6 @@ const getEl = {
   people() {
     inputNumberPeople.onkeyup = function () {
       let numberPeople = Number(this.value)
-      //console.log(numberPeople)
       ValidationNumberPeolple.validateInput()
       return numberPeople
     }
@@ -37,14 +36,7 @@ const getEl = {
 /* validar o campo inputNumberPeople */
 const ValidationNumberPeolple = {
   validateInput() {
-    inputNumberPeople.onkeydown = function (e) {
-      /* const keyNumber =  e.keyCode > 47 && e.keyCode < 58 || e.keyCode > 95 && e.keyCode < 106
-            const deleteNumber = e.keyCode == 8 || e.keyCode == 46
-            const otherSignals = e.keyCode == 110 || e.keyCode == 194 */
-
-      // filtrar os sinais de pontuação ( ',' ou '.' ) dentro do input
-      // no console a ',' = '.'
-      // e verificar se o valor do input é maior que 0
+    inputNumberPeople.onkeydown = function () {
       let inputNumber = inputNumberPeople.value
       let count = 0
       let input = inputNumber.indexOf('.')
@@ -76,7 +68,7 @@ const Res = {
   totalPercent(value) {
     let billValue = Number(inputBill.value)
     let peopleValue = Number(inputNumberPeople.value)
-    const buttonPercent = value / 100
+    const buttonPercent = value / 100   
 
     // total por pessoa sem gorjeta
     let divisionBill = billValue / peopleValue
@@ -84,14 +76,14 @@ const Res = {
     // quantia da gorjeta
     let percentTip = divisionBill * buttonPercent
     let totalPerPersona = divisionBill + percentTip
-
+    
     if (peopleValue > 0) {
       document.getElementById('tip-amountDisplay').innerHTML =
         Input.formatCurrency(percentTip)
       document.getElementById('totalDisplay').innerHTML =
         Input.formatCurrency(totalPerPersona)
 
-      document.querySelectorAll('[data-percent]').forEach(item => {
+      buttonDataPercent.forEach(item => {
         const itemPercentage = Number(item.getAttribute('data-percent'))
 
         if (itemPercentage === value) {
@@ -102,7 +94,7 @@ const Res = {
       })
 
       buttonCustom.value = ''
-      document.querySelector('.reset').classList.remove('empty')
+      resetButton.classList.remove('empty')
     }
     return
   },
@@ -120,18 +112,12 @@ const Res = {
     let totalPerPersona = divisionBill + percentTip
 
     if (peopleValue >= 1) {
-      document.getElementById('tip-amountDisplay').innerHTML =
-        Input.formatCurrency(percentTip)
-      document.getElementById('totalDisplay').innerHTML =
-        Input.formatCurrency(totalPerPersona)
-      button5.classList.remove('active')
-      button10.classList.remove('active')
-      button15.classList.remove('active')
-      button25.classList.remove('active')
-      button50.classList.remove('active')
-      document.querySelector('.reset').classList.remove('empty')
-    }
+      resetTip.innerHTML = Input.formatCurrency(percentTip)
+      resetTotal.innerHTML = Input.formatCurrency(totalPerPersona)
 
+      Clean.cleanButton()
+      resetButton.classList.remove('empty')
+    }
     return
   }
 }
@@ -149,35 +135,23 @@ const Input = {
 
 const Clean = {
   cleanButton() {
-    document.getElementById('5%').classList.remove('active')
-    document.getElementById('10%').classList.remove('active')
-    document.getElementById('15%').classList.remove('active')
-    document.getElementById('25%').classList.remove('active')
-    document.getElementById('50%').classList.remove('active')
+    buttonDataPercent.forEach(i => {
+      i.classList.remove('active')          
+    })
   },
 
   reset() {
-    let resetTip = document.getElementById('tip-amountDisplay')
-    let resetTotal = document.getElementById('totalDisplay')
-
     inputBill.value = ''
     inputNumberPeople.value = ''
-    button5.classList.remove('active')
-    button10.classList.remove('active')
-    button15.classList.remove('active')
-    button25.classList.remove('active')
-    button50.classList.remove('active')
+    this.cleanButton()
     buttonCustom.value = ''
 
     resetTip.innerHTML = '$0.00'
     resetTotal.innerHTML = '$0.00'
 
-    document.querySelector('.reset').classList.add('empty')
-
-    return
+    resetButton.classList.add('empty')
   }
 }
 
-//getEl.bill()
 getEl.tip()
 getEl.people()
