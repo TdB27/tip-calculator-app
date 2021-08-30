@@ -22,6 +22,9 @@ const getEl = {
       let buttonCustomPercent = this.value / 100
       return Res.totalCustom()
     }
+    buttonCustom.addEventListener('click', () => {
+      ValidationNumberPeolple.validateInpuForTip()
+    })
   },
 
   people() {
@@ -36,7 +39,7 @@ const getEl = {
 /* validar o campo inputNumberPeople */
 const ValidationNumberPeolple = {
   validateInput() {
-    inputNumberPeople.onkeydown = function () {
+    inputNumberPeople.onkeyup = function () {
       let inputNumber = inputNumberPeople.value
       let count = 0
       let input = inputNumber.indexOf('.')
@@ -60,6 +63,17 @@ const ValidationNumberPeolple = {
 
       return
     }
+  },
+
+  validateInpuForTip() {
+    if(inputNumberPeople.value === '') {
+      hidden.innerText = 'Enter a number'
+      inputNumberPeople.classList.add('no-validated')
+      hidden.classList.remove('hidden')
+    } else {
+      inputNumberPeople.classList.remove('no-validated')
+      hidden.classList.add('hidden')
+    }
   }
 }
 
@@ -68,7 +82,7 @@ const Res = {
   totalPercent(value) {
     let billValue = Number(inputBill.value)
     let peopleValue = Number(inputNumberPeople.value)
-    const buttonPercent = value / 100   
+    const buttonPercent = value / 100
 
     // total por pessoa sem gorjeta
     let divisionBill = billValue / peopleValue
@@ -76,6 +90,8 @@ const Res = {
     // quantia da gorjeta
     let percentTip = divisionBill * buttonPercent
     let totalPerPersona = divisionBill + percentTip
+
+    ValidationNumberPeolple.validateInpuForTip()
     
     if (peopleValue > 0) {
       document.getElementById('tip-amountDisplay').innerHTML =
@@ -110,6 +126,8 @@ const Res = {
     let percentTip = divisionBill * inputCustomPercent
     // total por pessoa com a gorjeta
     let totalPerPersona = divisionBill + percentTip
+    
+    ValidationNumberPeolple.validateInpuForTip()
 
     if (peopleValue >= 1) {
       resetTip.innerHTML = Input.formatCurrency(percentTip)
