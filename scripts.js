@@ -23,7 +23,8 @@ const getEl = {
       return Res.totalCustom()
     }
     buttonCustom.addEventListener('click', () => {
-      ValidationNumberPeolple.validateInpuForTip()
+      buttonCustom.value = ''
+      ValidationNumberPeolple.validateInputForTip()
     })
   },
 
@@ -33,6 +34,10 @@ const getEl = {
       ValidationNumberPeolple.validateInput()
       return numberPeople
     }
+
+    inputNumberPeople.addEventListener('click', () => {
+      inputNumberPeople.value = ''
+    })
   }
 }
 
@@ -49,13 +54,11 @@ const ValidationNumberPeolple = {
         input = inputNumber.indexOf('.', input + 1)
       }
       if (count > 0) {
-        hidden.innerText = 'Only whole numbers'
-        inputNumberPeople.classList.add('no-validated')
-        hidden.classList.remove('hidden')
+        hidden.innerText = "Only whole numbers"
+        ValidationNumberPeolple.callIdHidden();
       } else if (inputNumber < 1) {
         hidden.innerText = "Can't be zero"
-        inputNumberPeople.classList.add('no-validated')
-        hidden.classList.remove('hidden')
+        ValidationNumberPeolple.callIdHidden()
       } else {
         inputNumberPeople.classList.remove('no-validated')
         hidden.classList.add('hidden')
@@ -65,16 +68,24 @@ const ValidationNumberPeolple = {
     }
   },
 
-  validateInpuForTip() {
+  validateInputForTip() {
     if(inputNumberPeople.value === '') {
-      hidden.innerText = 'Enter a number'
-      inputNumberPeople.classList.add('no-validated')
-      hidden.classList.remove('hidden')
+      hidden.innerText = "Enter a number"
+      ValidationNumberPeolple.callIdHidden()
+    } else if (inputNumberPeople.value < 1) {
+      hidden.innerText = "Can't be zero"
+      ValidationNumberPeolple.callIdHidden()
     } else {
       inputNumberPeople.classList.remove('no-validated')
       hidden.classList.add('hidden')
     }
+  },
+
+  callIdHidden() {
+    inputNumberPeople.classList.add('no-validated')
+    hidden.classList.remove('hidden')
   }
+
 }
 
 /* calcular os elementos */
@@ -91,7 +102,7 @@ const Res = {
     let percentTip = divisionBill * buttonPercent
     let totalPerPersona = divisionBill + percentTip
 
-    ValidationNumberPeolple.validateInpuForTip()
+    ValidationNumberPeolple.validateInputForTip()
     
     if (peopleValue > 0) {
       document.getElementById('tip-amountDisplay').innerHTML =
@@ -127,7 +138,7 @@ const Res = {
     // total por pessoa com a gorjeta
     let totalPerPersona = divisionBill + percentTip
     
-    ValidationNumberPeolple.validateInpuForTip()
+    ValidationNumberPeolple.validateInputForTip()
 
     if (peopleValue >= 1) {
       resetTip.innerHTML = Input.formatCurrency(percentTip)
