@@ -29,7 +29,7 @@ body {
 }
 
 section {
-  width: 65%;
+  max-width: 936px;
   background: var(--section);
   margin: auto;
   display: flex;
@@ -244,6 +244,7 @@ button.active {
   }
 
   section {
+    max-width: 600px;
     width: 100%;
     flex-flow: column wrap;
     border-radius: 1.5rem 1.5rem 0 0;
@@ -301,10 +302,6 @@ button.active {
   .logo {
     padding-top: 8rem;
     padding-bottom: 4.4rem;
-  }
-
-  section {
-    width: 75%;
   }
 
   .content .value {
