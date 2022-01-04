@@ -54,8 +54,8 @@ const ValidationNumberPeolple = {
         input = inputNumber.indexOf('.', input + 1)
       }
       if (count > 0) {
-        hidden.innerText = "Only whole numbers"
-        ValidationNumberPeolple.callIdHidden();
+        hidden.innerText = 'Only whole numbers'
+        ValidationNumberPeolple.callIdHidden()
       } else if (inputNumber < 1) {
         hidden.innerText = "Can't be zero"
         ValidationNumberPeolple.callIdHidden()
@@ -69,8 +69,8 @@ const ValidationNumberPeolple = {
   },
 
   validateInputForTip() {
-    if(inputNumberPeople.value === '') {
-      hidden.innerText = "Enter a number"
+    if (inputNumberPeople.value === '') {
+      hidden.innerText = 'Enter a number'
       ValidationNumberPeolple.callIdHidden()
     } else if (inputNumberPeople.value < 1) {
       hidden.innerText = "Can't be zero"
@@ -85,7 +85,6 @@ const ValidationNumberPeolple = {
     inputNumberPeople.classList.add('no-validated')
     hidden.classList.remove('hidden')
   }
-
 }
 
 /* calcular os elementos */
@@ -103,7 +102,7 @@ const Res = {
     let totalPerPersona = divisionBill + percentTip
 
     ValidationNumberPeolple.validateInputForTip()
-    
+
     if (peopleValue > 0) {
       document.getElementById('tip-amountDisplay').innerHTML =
         Input.formatCurrency(percentTip)
@@ -137,7 +136,7 @@ const Res = {
     let percentTip = divisionBill * inputCustomPercent
     // total por pessoa com a gorjeta
     let totalPerPersona = divisionBill + percentTip
-    
+
     ValidationNumberPeolple.validateInputForTip()
 
     if (peopleValue >= 1) {
@@ -165,7 +164,7 @@ const Input = {
 const Clean = {
   cleanButton() {
     buttonDataPercent.forEach(i => {
-      i.classList.remove('active')          
+      i.classList.remove('active')
     })
   },
 
