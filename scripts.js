@@ -57,7 +57,7 @@ const ValidationNumberPeolple = {
         hidden.innerText = 'Only whole numbers'
         ValidationNumberPeolple.callIdHidden()
       } else if (inputNumber < 1) {
-        hidden.innerText = "Can't be zero"
+        hidden.innerText = "Can't be zero or less"
         ValidationNumberPeolple.callIdHidden()
       } else {
         inputNumberPeople.classList.remove('no-validated')
@@ -73,7 +73,7 @@ const ValidationNumberPeolple = {
       hidden.innerText = 'Enter a number'
       ValidationNumberPeolple.callIdHidden()
     } else if (inputNumberPeople.value < 1) {
-      hidden.innerText = "Can't be zero"
+      hidden.innerText = "Can't be zero or less"
       ValidationNumberPeolple.callIdHidden()
     } else {
       inputNumberPeople.classList.remove('no-validated')
