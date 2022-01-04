@@ -226,6 +226,12 @@ const Clean = {
   }
 }
 
-getEl.bill()
-getEl.tip()
-getEl.people()
+const App = {
+  init() {
+    getEl.bill()
+    getEl.tip()
+    getEl.people()
+  }
+}
+
+App.init()
