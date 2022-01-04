@@ -2,7 +2,8 @@ let inputBill = document.querySelector('#bill')
 let buttonDataPercent = document.querySelectorAll('[data-percent]')
 let buttonCustom = document.getElementById('custom')
 let inputNumberPeople = document.querySelector('#people')
-const hidden = document.querySelector('.number-people #hidden')
+const hiddenBill = document.querySelector('#hiddenBill')
+const hiddenPeople = document.querySelector('#hiddenPeople')
 
 const resetTip = document.getElementById('tip-amountDisplay')
 const resetTotal = document.getElementById('totalDisplay')
@@ -13,6 +14,7 @@ const getEl = {
   bill() {
     inputBill.onkeyup = function () {
       let inputBilly = Number(this.value)
+      Validation.validateInput('bill')
       return inputBilly
     }
   },
@@ -24,14 +26,14 @@ const getEl = {
     }
     buttonCustom.addEventListener('click', () => {
       buttonCustom.value = ''
-      ValidationNumberPeolple.validateInputForTip()
+      Validation.validateInputForTip()
     })
   },
 
   people() {
     inputNumberPeople.onkeyup = function () {
       let numberPeople = Number(this.value)
-      ValidationNumberPeolple.validateInput()
+      Validation.validateInput('people')
       return numberPeople
     }
 
@@ -42,48 +44,91 @@ const getEl = {
 }
 
 /* validar o campo inputNumberPeople */
-const ValidationNumberPeolple = {
-  validateInput() {
-    inputNumberPeople.onkeyup = function () {
-      let inputNumber = inputNumberPeople.value
-      let count = 0
-      let input = inputNumber.indexOf('.')
+const Validation = {
+  validationField(value, index) {
+    let count = 0
+    let input = value.indexOf('.')
 
-      while (input !== -1) {
-        count++
-        input = inputNumber.indexOf('.', input + 1)
-      }
+    while (input !== -1) {
+      count++
+      input = value.indexOf('.', input + 1)
+    }
+
+    if (index === 0) {
       if (count > 0) {
-        hidden.innerText = 'Only whole numbers'
-        ValidationNumberPeolple.callIdHidden()
-      } else if (inputNumber < 1) {
-        hidden.innerText = "Can't be zero or less"
-        ValidationNumberPeolple.callIdHidden()
+        hiddenBill.innerText = 'Only whole numbers'
+        Validation.callIdHidden(index)
+      } else if (value < 1) {
+        hiddenBill.innerText = "Can't be zero or less"
+        Validation.callIdHidden(index)
+      } else {
+        inputBill.classList.remove('no-validated')
+        hiddenBill.classList.add('hidden')
+      }
+    }
+
+    if (index === 1) {
+      if (count > 0) {
+        hiddenPeople.innerText = 'Only whole numbers'
+        Validation.callIdHidden(index)
+      } else if (value < 1) {
+        hiddenPeople.innerText = "Can't be zero or less"
+        Validation.callIdHidden(index)
       } else {
         inputNumberPeople.classList.remove('no-validated')
-        hidden.classList.add('hidden')
+        hiddenPeople.classList.add('hidden')
       }
+    }
+  },
 
-      return
+  validateInput(value) {
+    if (value == 'bill') {
+      let billInput = inputBill.value
+      const index = 0
+      Validation.validationField(billInput, index)
+    }
+
+    inputNumberPeople.onkeyup = function () {
+      let inputNumber = inputNumberPeople.value
+      const index = 1
+      Validation.validationField(inputNumber, index)
     }
   },
 
   validateInputForTip() {
+    if (inputBill.value === '') {
+      hiddenBill.innerText = 'Enter a number'
+      Validation.callIdHidden(0)
+    } else if (inputBill.value < 1) {
+      hiddenBill.innerText = "Can't be zero or less"
+      Validation.callIdHidden(0)
+    } else {
+      inputBill.classList.remove('no-validated')
+      hiddenBill.classList.add('hidden')
+    }
+
     if (inputNumberPeople.value === '') {
-      hidden.innerText = 'Enter a number'
-      ValidationNumberPeolple.callIdHidden()
+      hiddenPeople.innerText = 'Enter a number'
+      Validation.callIdHidden(1)
     } else if (inputNumberPeople.value < 1) {
-      hidden.innerText = "Can't be zero or less"
-      ValidationNumberPeolple.callIdHidden()
+      hiddenPeople.innerText = "Can't be zero or less"
+      Validation.callIdHidden(1)
     } else {
       inputNumberPeople.classList.remove('no-validated')
-      hidden.classList.add('hidden')
+      hiddenPeople.classList.add('hidden')
     }
   },
 
-  callIdHidden() {
-    inputNumberPeople.classList.add('no-validated')
-    hidden.classList.remove('hidden')
+  callIdHidden(value) {
+    if (value === 0) {
+      inputBill.classList.add('no-validated')
+      hiddenBill.classList.remove('hidden')
+    }
+
+    if (value === 1) {
+      inputNumberPeople.classList.add('no-validated')
+      hiddenPeople.classList.remove('hidden')
+    }
   }
 }
 
@@ -101,7 +146,7 @@ const Res = {
     let percentTip = divisionBill * buttonPercent
     let totalPerPersona = divisionBill + percentTip
 
-    ValidationNumberPeolple.validateInputForTip()
+    Validation.validateInputForTip()
 
     if (peopleValue > 0) {
       document.getElementById('tip-amountDisplay').innerHTML =
@@ -137,7 +182,7 @@ const Res = {
     // total por pessoa com a gorjeta
     let totalPerPersona = divisionBill + percentTip
 
-    ValidationNumberPeolple.validateInputForTip()
+    Validation.validateInputForTip()
 
     if (peopleValue >= 1) {
       resetTip.innerHTML = Input.formatCurrency(percentTip)
@@ -181,5 +226,6 @@ const Clean = {
   }
 }
 
+getEl.bill()
 getEl.tip()
 getEl.people()

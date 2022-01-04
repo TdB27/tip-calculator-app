@@ -89,6 +89,12 @@ h1 {
   color: var(--color-p);
 }
 
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
 /* ===SECTION-1 === */
 .bill input,
 .number-people input {
@@ -142,12 +148,6 @@ button.active {
 }
 
 /* === NUMBER-PEOPLE === */
-.number-people .flex {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-}
-
 .number-people input {
   background: url(./images/icon-person.svg) no-repeat var(--background-input);
   background-position: 6% 50%;
@@ -155,16 +155,16 @@ button.active {
 }
 
 /* validation */
-.number-people span.hidden {
+span.hidden {
   display: none;
 }
 
-.number-people span.no-validated {
+span.no-validated {
   color: red;
 }
 
-.number-people input.no-validated,
-.number-people input.no-validated:focus {
+input[type='number'].no-validated,
+input[type='number'].no-validated:focus {
   box-shadow: 0 0 0 1.5px red;
 }
 
@@ -266,7 +266,7 @@ button.active {
 
   .grid input {
     text-align: right;
-    padding: 1rem 1rem 1rem 2.5rem;
+    padding: 1rem 1rem 1rem;
   }
 
   .section-2 {

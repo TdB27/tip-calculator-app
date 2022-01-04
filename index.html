@@ -32,7 +32,12 @@
         <h1>app para calcular gorjeta</h1>
         <div class="section-1">
           <div class="bill">
-            <label for="bill">Bill</label>
+            <div class="flex">
+              <label for="bill">Bill</label>
+              <span id="hiddenBill" class="hidden no-validated"
+                ><!-- Can't be zero --></span
+              >
+            </div>
             <input type="number" id="bill" class="empty" placeholder="0" />
           </div>
           <div class="select-tip">
@@ -59,7 +64,7 @@
           <div class="number-people">
             <div class="flex">
               <label for="people"> Number of People</label>
-              <span id="hidden" class="hidden no-validated"
+              <span id="hiddenPeople" class="hidden no-validated"
                 ><!-- Can't be zero --></span
               >
             </div>
